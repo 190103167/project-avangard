@@ -1,0 +1,41 @@
+1)SELECT SUM(price) FROM products INNER JOIN product_category ON products.product_id=product_category.product_id INNER JOIN category ON 
+product_category.category_id = category.category_id INNER JOIN customer ON category.store_id = customer.store_id INNER JOIN address ON 
+customer.customer_id = address.customer_id WHERE address.address_name = 'Butcher Hill, West Park, LEEDS, LS16 5EA';
+
+
+2)Select phone 
+FROM Customer 
+JOIN Category on Customer.store_id=Category.store_id 
+JOIN Product_category on Category.category_id = Product_category.category_id    
+JOIN Products on Product_category.product_id=Products.product_id 
+WHERE Products.price=(select Min(price) from Products);
+
+
+
+3)Select address_id 
+FROM Address 
+JOIN Customer on Address.customer_id=Customer.customer_id 
+JOIN Category on Customer.store_id=Category.store_id 
+JOIN Product_category on Category.category_id=Product_category.category_id 
+JOIN Products on Product_category.product_id=Products.product_id 
+WHERE Products.price=(select Max(price) from Products);
+
+
+
+4)Select Address.address_name,Customer.phone,Products.product_name 
+FROM Address join Customer on Address.customer_id=Customer.customer_id 
+JOIN Category on Customer.store_id=Category.store_id
+JOIN Product_category on Category.category_id=Product_category.category_id 
+JOIN Products on Product_category.product_id=Products.product_id
+WHERE Customer.phone='1 132 640 450';
+
+
+
+5)Select Count(customer_id) FROM Customer 
+JOIN Category on Customer.store_id=Category.store_id 
+JOIN Product_category on Category.category_id=Product_category.category_id 
+JOIN Products on Product_category.product_id=Products.product_id
+WHERE Products.product_name='Capacitor Electric Double Layer-Supercaps';
+
+
+
